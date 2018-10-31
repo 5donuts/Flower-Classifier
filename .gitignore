@@ -105,4 +105,5 @@ venv.bak/
 
 # ignore the images
 flowers-raw/
+flowers-scaled/
 flowers-recognition.zip
