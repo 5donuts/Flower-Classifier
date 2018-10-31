@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# ignore the images
+flowers-raw/
+flowers-recognition.zip
