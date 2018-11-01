@@ -12,12 +12,12 @@ def scale_and_crop(img):
     width, height = img.size
     aspect_ratio = width / height
     if width < height:
-        scaled_img = img.resize((SIZE, int(SIZE * aspect_ratio)), Image.ANTIALIAS)
-        cropped_img = img.crop((0, 0, SIZE, SIZE))
+        scaled_img = img.resize((SIZE, int(SIZE / aspect_ratio)), Image.ANTIALIAS)
+        cropped_img = img.crop((0, ((height-SIZE)/2), SIZE, SIZE+((height-SIZE)/2)))
         return cropped_img
     else:
         scaled_img = img.resize((int(SIZE * aspect_ratio), SIZE), Image.ANTIALIAS)
-        cropped_img = img.crop((0, 0, SIZE, SIZE))
+        cropped_img = img.crop((((height-SIZE)/2), 0, SIZE+((width-SIZE)/2), SIZE))
         return cropped_img
 
 # get the second-to-last occurrence of pattern in text
