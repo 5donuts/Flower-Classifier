@@ -30,4 +30,5 @@ poor examples.
 ## InceptionV3
 We're using Google's pre-trained InceptionV3 model for feature extraction.
 In particular, we're using the weights from InceptionV3 mentioned in the third
-section of [Google's image classification exercise](https://colab.research.google.com/github/google/eng-edu/blob/master/ml/pc/exercises/image_classification_part3.ipynb?utm_source=practicum-IC&utm_campaign=colab-external&utm_medium=referral&hl=en&utm_content=imageexercise3-colab#scrollTo=KMrbllgAFipZ).
+section of [Google's image classification exercise](https://colab.research.google.com/github/google/eng-edu/blob/master/ml/pc/exercises/image_classification_part3.ipynb?utm_source=practicum-IC&utm_campaign=colab-external&utm_medium=referral&hl=en&utm_content=imageexercise3-colab#scrollTo=KMrbllgAFipZ),
+since this project is based off of that exercise.
