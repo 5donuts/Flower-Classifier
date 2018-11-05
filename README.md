@@ -29,13 +29,33 @@ poor examples.
 
 ## Using `separate-images.py`
 Assuming you've already modified your dataset with `scale-and-crop-images.py`,
-then for each subdirectory in `flowers-scaled/` (e.g., `rose`, `daisy`) run
-`./separate-images.py <dir>` (e.g., `./separate-images.py flowers-scaled/rose`).
+then run `./separate-images.py flowers-scaled/`.
 
-This will proportionally separate each image in the given subdirectory into three
-subdirectories, `<dir>/training`, `<dir>/validation`, and `<dir>/testing`.
-We use these directories as our training datasets, validation datasets, and testing
-datasets respectively.
+This will separate each image into one of three directories:
+* `training`
+* `validation`
+* `testing`
+
+Each of those directories will contain a subdirectory labeling the type of flowers
+in the images contained within.
+For example, the `training` directory should have the following structure:
+```
+training/
+├── daisy
+├── dandelion
+├── rose
+├── sunflower
+└── tulip
+```
+
+Images will be randomly separated between `training`, `testing`, and `validation`
+groups in such a way that approximately 20% of images will be placed in `testing`,
+approximately 16% into `validation`, and the remaining approximately `64%` into
+`training`.
+
+This mirrors an 80/20 split between training and testing datasets, where the
+training dataset is further divided into an 80/20 split between training and
+validation.
 
 ## InceptionV3
 We're using Google's pre-trained InceptionV3 model for feature extraction.
