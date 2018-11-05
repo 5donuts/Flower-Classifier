@@ -103,7 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# ignore the images
+# ignore large files
 flowers-raw/
-#flowers-scaled/
+flowers-scaled/
 flowers-recognition.zip
+inception_v3_weights.h5
