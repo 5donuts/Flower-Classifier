@@ -27,6 +27,16 @@ Note that the `flowers-scaled/` directory in this repository does not contain th
 images from the original Kaggle dataset, as we removed some that were either improperly labeled or were
 poor examples.
 
+## Using `separate-images.py`
+Assuming you've already modified your dataset with `scale-and-crop-images.py`,
+then for each subdirectory in `flowers-scaled/` (e.g., `rose`, `daisy`) run
+`./separate-images.py <dir>` (e.g., `./separate-images.py flowers-scaled/rose`).
+
+This will proportionally separate each image in the given subdirectory into three
+subdirectories, `<dir>/training`, `<dir>/validation`, and `<dir>/testing`.
+We use these directories as our training datasets, validation datasets, and testing
+datasets respectively.
+
 ## InceptionV3
 We're using Google's pre-trained InceptionV3 model for feature extraction.
 In particular, we're using the weights from InceptionV3 mentioned in the third
@@ -37,6 +47,6 @@ You can obtain a copy of the InceptionV3 weights we used with
 
 `wget https://storage.googleapis.com/mledu-datasets/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5`
 
-then 
+then
 
 `mv inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5 inception_v3_weights.h5`
