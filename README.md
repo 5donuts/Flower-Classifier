@@ -34,5 +34,9 @@ section of [Google's image classification exercise](https://colab.research.googl
 since this project is based off of that exercise.
 
 You can obtain a copy of the InceptionV3 weights we used with
+
 `wget https://storage.googleapis.com/mledu-datasets/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5`
-then `mv inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5 inception_v3_weights.h5`
+
+then 
+
+`mv inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5 inception_v3_weights.h5`
