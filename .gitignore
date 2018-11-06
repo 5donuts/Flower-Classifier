@@ -108,3 +108,4 @@ flowers-raw/
 flowers-scaled/
 flowers-recognition.zip
 inception_v3_weights.h5
+weights/
