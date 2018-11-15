@@ -3,6 +3,7 @@
 import os
 import signal
 import zipfile
+import datetime
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -38,8 +39,10 @@ last_output = last_layer.output
 x = layers.Flatten()(last_output)
 # Add a fully connected layer with 1,024 hidden units and ReLU activation
 x = layers.Dense(1024, activation='relu')(x)
-# Add a dropout rate of 0.2
-x = layers.Dropout(0.2)(x)
+# add another fully connected layer with 128 hidden units and ReLU activation
+x = layers.Dense(128, activation='relu')(x)
+# Add a dropout rate of 0.3
+x = layers.Dropout(0.3)(x)
 # Add a final softmax layer with 5 nodes for classification
 x = layers.Dense(5, activation = 'softmax')(x)
 
@@ -119,7 +122,7 @@ history = model.fit_generator(
     verbose = 2
 )
 
-"""
+# NB this should only be done AFTER we have pre-trained the model
 # fine-tune the higher layers (after 'mixed6') of the pre-trained model to be more
 # specific to this flowers dataset
 unfreeze = False
@@ -143,12 +146,14 @@ model.compile(
 history = model.fit_generator(
     train_generator,
     steps_per_epoch = 100,
-    epochs = 50,
+    epochs = 5,
     validation_data = validation_generator,
     validation_steps = 50,
     verbose = 2
 )
 
+# TODO make a confusion matrix and examine details of model performance
+"""
 # plot training & validation accuracy & loss per epoch
 acc = history.history['acc']
 val_acc = history.history['val_acc']
@@ -169,9 +174,9 @@ plt.plot(epochs, val_loss)
 plt.title('Training and validation loss')
 """
 
-# save the weights to a file
+# save the weights to a HDF5 file
 output_dir = 'weights'
-output_file = os.path.join(output_dir, 'flower-weights')
+output_file = os.path.join(output_dir, 'flower-weights' + str(datetime.datetime.now()).split('.')[0] + '.h5')
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 model.save_weights(output_file)
