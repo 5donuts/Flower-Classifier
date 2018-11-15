@@ -175,8 +175,23 @@ plt.title('Training and validation loss')
 """
 
 # save the weights to a HDF5 file
+"""
+#Print confusion matrix of all items in validation set
+evaluation_generator = test_datagen.flow_from_directory(
+    validation_dir,
+    target_size=(240, 240),
+    batch_size=1,
+    class_mode='categorical',
+    shuffle=False)
+
+y_pred_frac = model.predict_generator(evaluation_generator, evaluation_generator.classes.size)
+y_pred = np.argmax(y_pred_frac, axis=1)
+print('Confusion Matrix')
+print(confusion_matrix(evaluation_generator.classes, y_pred))
+"""
+
 output_dir = 'weights'
-output_file = os.path.join(output_dir, 'flower-weights' + str(datetime.datetime.now()).split('.')[0] + '.h5')
+output_file = os.path.join(output_dir, 'flower-weights ' + str(datetime.datetime.now()).split('.')[0] + '.h5')
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 model.save_weights(output_file)
