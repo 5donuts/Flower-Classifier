@@ -174,7 +174,7 @@ plt.plot(epochs, val_loss)
 plt.title('Training and validation loss')
 """
 
-# save the weights to a HDF5 file
+# TODO generate & examine a confusion matrix
 """
 #Print confusion matrix of all items in validation set
 evaluation_generator = test_datagen.flow_from_directory(
@@ -190,6 +190,7 @@ print('Confusion Matrix')
 print(confusion_matrix(evaluation_generator.classes, y_pred))
 """
 
+# save the weights to a HDF5 file
 output_dir = 'weights'
 output_file = os.path.join(output_dir, 'flower-weights ' + str(datetime.datetime.now()).split('.')[0] + '.h5')
 if not os.path.exists(output_dir):
