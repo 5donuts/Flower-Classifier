@@ -50,7 +50,7 @@ training/
 
 Images will be randomly separated between `training`, `testing`, and `validation`
 groups in such a way that approximately 20% of images will be placed in `testing`,
-approximately 16% into `validation`, and the remaining approximately `64%` into
+approximately 16% into `validation`, and the remaining approximately 64% into
 `training`.
 
 This mirrors an 80/20 split between training and testing datasets, where the

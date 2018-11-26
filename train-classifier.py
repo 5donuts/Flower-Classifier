@@ -152,7 +152,7 @@ history = model.fit_generator(
     verbose = 2
 )
 
-# TODO make a confusion matrix and examine details of model performance
+# TODO make examine metrics for model performance
 """
 # plot training & validation accuracy & loss per epoch
 acc = history.history['acc']
@@ -190,10 +190,10 @@ print('Confusion Matrix')
 print(confusion_matrix(evaluation_generator.classes, y_pred))
 """
 
-# save the weights to a HDF5 file
+# save the model to an HDF5 file
 output_dir = 'weights'
-output_file = os.path.join(output_dir, 'flower-weights ' + str(datetime.datetime.now()).split('.')[0] + '.h5')
+output_file = os.path.join(output_dir, 'flower-model ' + str(datetime.datetime.now()).split('.')[0] + '.h5')
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
-model.save_weights(output_file)
-print("Saved weights as %s" % output_file)
+model.save(output_file)
+print("Saved model as %s" % output_file)
