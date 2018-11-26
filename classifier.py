@@ -11,6 +11,8 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 
+labels = [ "daisy", "dandelion", "rose", "sunflower", "tulip" ]
+
 def load_the_model(model_file):
     try:
         model = tf.keras.models.load_model(model_file)
@@ -26,7 +28,12 @@ def predict(img_path, model):
     x = np.expand_dims(x, axis = 0)
     x = preprocess_input(x)
     predictions = model.predict(x)
-    print(predictions)
+    return predictions.tolist()[0]
+
+def print_result(file, predictions):
+    print("Predictions for '%s':" % file)
+    for i in range(0, len(predictions)):
+        print("\t%s: %.5f" % (labels[i], predictions[i]))
 
 if __name__ == "__main__":
     # usage: ./classifier.py "weights/flower-model YYYY-MM-DD HH:MM:SS.h5" test-images/
@@ -55,19 +62,12 @@ if __name__ == "__main__":
     # load the model & get set up for predictions
     # if the saved model is invalid, alert the user and abort
     model = load_the_model(model_file)
-    # predict_datagen = ImageDataGenerator(rescale = 1./255)
-    # predict_generator = predict_datagen.flow_from_directory(
-    #     image_dir,
-    #     target_size = (240, 240),
-    #     class_mode = 'categorical'
-    # )
-    #
-    # print(model.predict_generator(predict_generator))
 
     # classify each image, skipping subdirectories
     for item in images:
-        if os.path.isdir(item):
+        if os.path.isdir(os.path.join(image_dir, item)):
             continue
         else:
             image_path = os.path.join(image_dir, item)
-            predict(image_path, model)
+            predictions = predict(image_path, model)
+            print_result(image_path, predictions)
