@@ -84,6 +84,9 @@ This mirrors an 80/20 split between training and testing datasets, where the
 training dataset is further divided into an 80/20 split between training and
 validation.
 
+Run the script with the scaled flowers directory as the argument, i.e.,
+`./separate-images.py flowers-scaled/`.
+
 ## Using `train-classifier.py`
 This script was not written to be very flexible.
 It requires that the InceptionV3 model be saved in the working directory as
